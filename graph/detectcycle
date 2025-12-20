@@ -1,0 +1,52 @@
+
+bool undirectedgraphCycledetectiondfs(int u,int p,vector<int>adj[],vector<int>&vis){
+    vis[u]=1;
+    
+    for(auto v:adj[u]){
+        if(!vis[v]){
+            if(undirectedgraphCycledetectiondfs(v,u,adj,vis)){
+                return true;
+            }
+        }
+        else if(v!=p)
+         return true;
+    }
+    
+    return false;
+    
+}
+
+
+
+bool undirectedgraphCycledetection(int u,vector<int>adj[],vector<int>&vis,vector<int>&path){
+    vis[u]=1;
+    path[u]=1;
+    
+    for(auto v:adj[u]){
+        if(!vis[v]){
+            if(dfs(v,adj,vis,path))
+             return true;
+        }
+        else if(path[v])
+         return true;
+    }
+    
+    path[u]=0;
+    return false;
+    
+    
+}
+
+bool detectcycle(int v,vector<int>adj[]){
+     
+     vector<int>vis(v,0),path(v,0);
+     
+     for(int i=0;i<adj.size();i++){
+         if(!vis[i]){
+             if(dfs(i,adj,vis,path))
+              return true;
+         }
+     }
+     
+     return false;
+}

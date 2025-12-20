@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+vector<int>bfsofgraph(int V,vector<int>adj[],int src){
+    
+    vector<int>bfs;
+    vector<bool>vis(V,0);
+    queue<int>que;
+    
+    que.push(src);
+    vis[src]=true;
+    
+    while(!que.empty()){
+        int curr=que.front();
+        que.pop();
+        
+        bfs.push_back(curr);
+        
+        for(auto v:adj[curr]){
+            if(!vis[v]){
+                vis[v]=true;
+                que.push(v);
+            }
+        }
+    }
+    
+    return bfs;
+
+    
+}
+
+vector<int>bfsofgraphindisconnectedGraph(int v,vector<int>adj[]){
+    vector<int>bfs;
+    vector<bool>vis(V,0);
+    
+    for(int i=0;i<V;i++){
+      if(!vis[i]){
+        queue<int>q;
+        q.push(i);
+        vis[i]=true;
+        
+        
+        while(!q.empty()){
+            int curr=q.front();
+            q.pop();
+            bfs.push_back(curr);
+            for(int x:adj[curr]){
+                if(!vis[x]){
+                    vis[x]=true;
+                    q.push(x);
+                }
+            }
+        }
+        
+      }
+        
+        
+    }
+    
+    return bfs;
+}
+
+
+
+
+int main() {
+	vector<int>path
+
+}
